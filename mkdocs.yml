@@ -1,1 +1,22 @@
-site_name: My Docs
+site_name: My Documentation
+site_description: A simple and effective documentation
+
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+  palette:
+    primary: "indigo"
+    accent: "pink"
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+extra:
+  author: Ocean
+
