@@ -1,8 +1,8 @@
 # Welcome to MY SITE
 
-HELLO WORLD
-
-
+## HELLO WORLD
+ 
+## BLOG
 
 ## Project layout
 
