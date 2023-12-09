@@ -4,6 +4,8 @@
  
 ## BLOG
 
+## workflow的yml文件
+- 我们采用 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions) 的模板
 ## Project layout
 
     mkdocs.yml    # The configuration file.
