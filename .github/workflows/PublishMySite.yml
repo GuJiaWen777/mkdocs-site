@@ -7,10 +7,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:  # mkdocs-blogging-plugin 给出的渲染问题解决方案
           fetch-depth: 0
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.x
       - run: pip install mkdocs==1.1.2
