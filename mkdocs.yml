@@ -1,22 +1,65 @@
-site_name: My Documentation
-site_description: A simple and effective documentation
+site_name: "Jiawen Gu - Academic Homepage"
+site_description: "Personal academic homepage"
+site_url: https://gujiawen777.github.io/mkdocs-site/
+site_author: Jiawen Gu
 
 nav:
   - Home: index.md
+  - Publications: publications.md
+  - Research: research.md
+  - CV: cv.md
+  - Notes:
+    - Overview: notes/index.md
+    - Transfer Learning: notes/transfer-learning.md
+  
 
 theme:
   name: material
   palette:
-    primary: "indigo"
-    accent: "pink"
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - header.autohide
+    - search.suggest
+    - search.highlight
+  icon:
+    logo: material/account-circle
 
 markdown_extensions:
   - admonition
+  - footnotes
+  - attr_list
   - pymdownx.superfences
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.tasklist
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
 
 plugins:
   - search
 
 extra:
-  author: Ocean
+  author: Jiawen Gu
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gujiawen777
+      name: GitHub
+    - icon: fontawesome/solid/envelope
+      link: mailto:your.email@example.com
+      name: Email
+    - icon: fontawesome/solid/graduation-cap
+      link: https://scholar.google.com/
+      name: Google Scholar
 
+extra_css:
+  - stylesheets/extra.css
