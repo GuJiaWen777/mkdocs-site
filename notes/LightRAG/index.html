@@ -1,0 +1,2382 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal academic homepage">
+      
+      
+        <meta name="author" content="Jiawen Gu">
+      
+      
+        <link rel="canonical" href="https://gujiawen777.github.io/mkdocs-site/notes/LightRAG/">
+      
+      
+        <link rel="prev" href="../GraphRAG/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>LightRAG - Jiawen Gu - Academic Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lightrag" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Jiawen Gu - Academic Homepage" class="md-header__button md-logo" aria-label="Jiawen Gu - Academic Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Jiawen Gu - Academic Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LightRAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cv/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  CV
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../research/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Research
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Jiawen Gu - Academic Homepage" class="md-nav__button md-logo" aria-label="Jiawen Gu - Academic Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 19.2c-2.5 0-4.71-1.28-6-3.2.03-2 4-3.1 6-3.1s5.97 1.1 6 3.1a7.23 7.23 0 0 1-6 3.2M12 5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-3A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+
+    </a>
+    Jiawen Gu - Academic Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transfer-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transfer Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GraphRAG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphRAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LightRAG
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LightRAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是 LightRAG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心原理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 双层检索范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 双层检索范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一层：向量检索（Vector Retrieval）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二层：图遍历（Graph Traversal）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 增量式图谱构建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 轻量级实体关系抽取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-low-level-high-level-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 双层关键字机制（Low-Level &amp; High-Level Keys）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 双层关键字机制（Low-Level &amp; High-Level Keys）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-level-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Level Key（高层关键词）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-level-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low-Level Key（低层关键词）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双层检索流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要双层 Key？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实际检索示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="架构流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        索引阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询阶段
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="查询阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双层检索的具体实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag-vs-graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LightRAG vs GraphRAG 详细对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightRAG vs GraphRAG 详细对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        性能对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        适用场景对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LightRAG 的优势
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightRAG 的优势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 成本效益
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 实时性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 可扩展性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 易用性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LightRAG 的局限性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightRAG 的局限性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 全局上下文弱于 GraphRAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 复杂推理场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 实体消歧
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术实现要点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技术实现要点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键参数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数调优建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用建议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="应用建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选择 GraphRAG 的场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightrag_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选择 LightRAG 的场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关资源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        什么是 LightRAG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心原理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="核心原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 双层检索范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 双层检索范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一层：向量检索（Vector Retrieval）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二层：图遍历（Graph Traversal）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 增量式图谱构建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 轻量级实体关系抽取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-low-level-high-level-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 双层关键字机制（Low-Level &amp; High-Level Keys）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 双层关键字机制（Low-Level &amp; High-Level Keys）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-level-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Level Key（高层关键词）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-level-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low-Level Key（低层关键词）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双层检索流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么需要双层 Key？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实际检索示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="架构流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        索引阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        查询阶段
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="查询阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双层检索的具体实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag-vs-graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LightRAG vs GraphRAG 详细对比
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightRAG vs GraphRAG 详细对比">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        性能对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        适用场景对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LightRAG 的优势
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightRAG 的优势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 成本效益
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 实时性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 可扩展性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 易用性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightrag_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LightRAG 的局限性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightRAG 的局限性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 全局上下文弱于 GraphRAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 复杂推理场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 实体消歧
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技术实现要点
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技术实现要点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键参数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键参数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数调优建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用建议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="应用建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graphrag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选择 GraphRAG 的场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightrag_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选择 LightRAG 的场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关资源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lightrag">LightRAG</h1>
+<h2 id="lightrag_1">什么是 LightRAG</h2>
+<p>LightRAG 是由香港大学（HKU）数据科学实验室于 2024 年提出的<strong>轻量级检索增强生成框架</strong>。它在保留 GraphRAG 知识图谱优势的同时，大幅降低了构建和维护成本，实现了更高效的实体关系检索。</p>
+<hr />
+<h2 id="_1">核心原理</h2>
+<h3 id="1">1. 双层检索范式</h3>
+<p>LightRAG 采用独特的<strong>双层检索策略</strong>，结合了向量化检索和图结构遍历：</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
+│                   LightRAG 架构                          │
+├─────────────────────────────────────────────────────────┤
+│  输入查询                                                │
+│     ↓                                                   │
+│  ┌─────────────┐     ┌─────────────┐                   │
+│  │  向量检索    │     │  图谱遍历    │                   │
+│  │  (语义匹配)  │     │  (关系推理)  │                   │
+│  └──────┬──────┘     └──────┬──────┘                   │
+│         ↓                   ↓                           │
+│  ┌─────────────────────────────────┐                   │
+│  │     混合排序与结果融合           │                   │
+│  └───────────────┬─────────────────┘                   │
+│                  ↓                                      │
+│              生成回答                                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h4 id="vector-retrieval">第一层：向量检索（Vector Retrieval）</h4>
+<ul>
+<li>将查询和知识图谱中的实体、关系编码为向量</li>
+<li>使用相似度搜索快速定位相关子图</li>
+<li><strong>优势</strong>：速度快，适合大规模数据</li>
+</ul>
+<h4 id="graph-traversal">第二层：图遍历（Graph Traversal）</h4>
+<ul>
+<li>从检索到的实体出发，沿关系边进行局部遍历</li>
+<li>捕捉多跳关系（Multi-hop Relations）</li>
+<li><strong>优势</strong>：保留图结构信息，支持复杂推理</li>
+</ul>
+<h3 id="2">2. 增量式图谱构建</h3>
+<p>与传统 GraphRAG 的批量构建不同，LightRAG 支持<strong>增量更新</strong>：</p>
+<div class="highlight"><pre><span></span><code>传统 GraphRAG:                LightRAG:
+    ↓                              ↓
+┌─────────┐                 ┌─────────┐
+│ 文档集合 │                 │ 文档流  │
+└────┬────┘                 └────┬────┘
+     ↓                           ↓
+┌─────────┐                 ┌─────────┐
+│批量处理  │                 │增量处理 │
+│(高成本)  │                 │(低成本) │
+└────┬────┘                 └────┬────┘
+     ↓                           ↓
+┌─────────┐                 ┌─────────┐
+│完整重建  │                 │局部更新 │
+│图谱      │                 │图谱     │
+└─────────┘                 └─────────┘
+</code></pre></div>
+<h3 id="3">3. 轻量级实体关系抽取</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>GraphRAG</th>
+<th>LightRAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抽取粒度</td>
+<td>完整实体+详细关系+社区摘要</td>
+<td>核心实体+关键关系</td>
+</tr>
+<tr>
+<td>LLM 调用</td>
+<td>多轮复杂提示</td>
+<td>单轮简化提示</td>
+</tr>
+<tr>
+<td>存储开销</td>
+<td>大（包含向量+图谱+摘要）</td>
+<td>小（核心图谱结构）</td>
+</tr>
+<tr>
+<td>更新成本</td>
+<td>高（需重新计算社区）</td>
+<td>低（局部增删）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-low-level-high-level-keys">4. 双层关键字机制（Low-Level &amp; High-Level Keys）</h3>
+<p>LightRAG 的核心创新之一是引入了<strong>双层关键字机制</strong>，实现对查询的精细化理解：</p>
+<h4 id="high-level-key">High-Level Key（高层关键词）</h4>
+<ul>
+<li><strong>定义</strong>：查询的抽象主题、概念类别或宏观语义</li>
+<li><strong>作用</strong>：捕捉用户问题的整体意图和上下文</li>
+<li><strong>示例</strong>：</li>
+<li>查询："苹果公司最近发布了哪些新产品？"</li>
+<li>High-Level Key：<code>科技公司</code>、<code>产品发布</code>、<code>创新动态</code></li>
+</ul>
+<h4 id="low-level-key">Low-Level Key（低层关键词）</h4>
+<ul>
+<li><strong>定义</strong>：查询中的具体实体、专有名词或精确信息</li>
+<li><strong>作用</strong>：定位具体的知识点和事实细节</li>
+<li><strong>示例</strong>：</li>
+<li>查询："苹果公司最近发布了哪些新产品？"</li>
+<li>Low-Level Key：<code>苹果公司</code>、<code>iPhone</code>、<code>MacBook</code>、<code>发布日期</code></li>
+</ul>
+<h4 id="_2">双层检索流程</h4>
+<div class="highlight"><pre><span></span><code>用户查询
+    ↓
+┌─────────────────────────────────────┐
+│  查询分解：提取 High &amp; Low Level Keys │
+└───────────────┬─────────────────────┘
+                ↓
+    ┌───────────┴───────────┐
+    ↓                       ↓
+High-Level 检索          Low-Level 检索
+(语义匹配)               (精确匹配)
+    ↓                       ↓
+宏观相关子图              精确实体节点
+    └───────────┬───────────┘
+                ↓
+        结果融合与重排序
+                ↓
+            生成回答
+</code></pre></div>
+<h4 id="key">为什么需要双层 Key？</h4>
+<table>
+<thead>
+<tr>
+<th>单一策略的问题</th>
+<th>双层 Key 的解决</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>仅用 Low-Level：可能遗漏语义相关的扩展信息</td>
+<td>High-Level 提供上下文，扩展召回范围</td>
+</tr>
+<tr>
+<td>仅用 High-Level：召回结果过于宽泛，噪音多</td>
+<td>Low-Level 精准定位，过滤无关内容</td>
+</tr>
+<tr>
+<td>复杂查询难以用单一向量完整表达</td>
+<td>分层解构，分别优化检索策略</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_3">实际检索示例</h4>
+<p><strong>查询</strong>："特斯拉 CEO 在 2024 年有哪些争议言论？"</p>
+<table>
+<thead>
+<tr>
+<th>Key 类型</th>
+<th>提取结果</th>
+<th>检索作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High-Level</strong></td>
+<td><code>企业管理</code>、<code>公众人物</code>、<code>争议事件</code>、<code>言论分析</code></td>
+<td>召回相关商业新闻、领导力分析类文档</td>
+</tr>
+<tr>
+<td><strong>Low-Level</strong></td>
+<td><code>特斯拉</code>、<code>Elon Musk</code>、<code>2024年</code>、<code>Twitter/X</code></td>
+<td>精确定位涉及马斯克的具体报道和事件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>融合效果</strong>：既保证了对"马斯克争议"这一主题的全面覆盖，又精确筛选出 2024 年的相关内容。</p>
+<hr />
+<h2 id="_4">架构流程</h2>
+<h3 id="_5">索引阶段</h3>
+<div class="highlight"><pre><span></span><code>文档输入
+    ↓
+文本分块（Chunking）
+    ↓
+轻量级实体关系抽取（单次 LLM 调用）
+    ↓
+实体/关系向量化存储
+    ↓
+增量更新知识图谱
+</code></pre></div>
+<h3 id="_6">查询阶段</h3>
+<div class="highlight"><pre><span></span><code>用户查询
+    ↓
+├── 查询分解：提取 Low-Level &amp; High-Level Keys
+    ↓
+├── 双层向量检索
+│   ├── Low-Level 检索：精确实体匹配
+│   └── High-Level 检索：语义主题匹配
+    ↓
+├── 子图扩展（Graph Expansion）
+│   └── 从匹配实体出发，遍历 N 跳邻居
+    ↓
+├── 相关子图排序与融合
+    ↓
+└── LLM 生成回答
+</code></pre></div>
+<h4 id="_7">双层检索的具体实现</h4>
+<p><strong>Step 1: 查询关键词提取</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 LLM 或规则从查询中提取双层关键词</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_keys</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+    <span class="c1"># High-Level: 抽象主题</span>
+    <span class="n">high_level_keys</span> <span class="o">=</span> <span class="n">extract_concepts</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>  <span class="c1"># 如：科技公司、产品发布</span>
+
+    <span class="c1"># Low-Level: 具体实体</span>
+    <span class="n">low_level_keys</span> <span class="o">=</span> <span class="n">extract_entities</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>   <span class="c1"># 如：苹果公司、iPhone 16</span>
+
+    <span class="k">return</span> <span class="n">high_level_keys</span><span class="p">,</span> <span class="n">low_level_keys</span>
+</code></pre></div></p>
+<p><strong>Step 2: 并行向量检索</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># 分别对 High-Level 和 Low-Level 关键词进行检索</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dual_retrieval</span><span class="p">(</span><span class="n">high_keys</span><span class="p">,</span> <span class="n">low_keys</span><span class="p">):</span>
+    <span class="c1"># High-Level: 语义相似度搜索（较宽泛）</span>
+    <span class="n">high_results</span> <span class="o">=</span> <span class="n">vector_search</span><span class="p">(</span><span class="n">high_keys</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+    <span class="c1"># Low-Level: 精确匹配搜索（较严格）</span>
+    <span class="n">low_results</span> <span class="o">=</span> <span class="n">vector_search</span><span class="p">(</span><span class="n">low_keys</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">merge_results</span><span class="p">(</span><span class="n">high_results</span><span class="p">,</span> <span class="n">low_results</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Step 3: 结果融合策略</strong>
+- <strong>加权融合</strong>：Low-Level 结果权重更高（0.6），High-Level 补充召回（0.4）
+- <strong>去重排序</strong>：合并后按综合相关度重新排序
+- <strong>上下文扩展</strong>：基于融合结果进行图遍历，获取多跳关系</p>
+<hr />
+<h2 id="lightrag-vs-graphrag">LightRAG vs GraphRAG 详细对比</h2>
+<h3 id="_8">架构对比</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>GraphRAG</th>
+<th>LightRAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>构建成本</strong></td>
+<td>高（需要完整的实体抽取、关系建模、社区检测）</td>
+<td>低（简化抽取流程，减少 LLM 调用）</td>
+</tr>
+<tr>
+<td><strong>存储需求</strong></td>
+<td>大（图谱 + 向量 + 社区摘要 + 层级索引）</td>
+<td>小（核心图谱 + 向量索引）</td>
+</tr>
+<tr>
+<td><strong>更新方式</strong></td>
+<td>批量重建（插入新文档需重建）</td>
+<td>增量更新（支持流式文档）</td>
+</tr>
+<tr>
+<td><strong>查询延迟</strong></td>
+<td>中等（社区搜索+全局/局部查询）</td>
+<td>低（向量检索+轻量级图遍历）</td>
+</tr>
+<tr>
+<td><strong>可扩展性</strong></td>
+<td>受限于社区计算复杂度</td>
+<td>高（支持大规模动态数据）</td>
+</tr>
+<tr>
+<td><strong>多跳推理</strong></td>
+<td>强（基于社区的全局推理）</td>
+<td>中等（基于局部子图遍历）</td>
+</tr>
+<tr>
+<td><strong>实现复杂度</strong></td>
+<td>高</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">性能对比</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>GraphRAG</th>
+<th>LightRAG</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>索引时间</td>
+<td>较长</td>
+<td>显著降低</td>
+<td>LightRAG 减少 LLM 调用次数</td>
+</tr>
+<tr>
+<td>存储占用</td>
+<td>大</td>
+<td>小</td>
+<td>无需存储社区摘要</td>
+</tr>
+<tr>
+<td>查询速度</td>
+<td>中等</td>
+<td>快</td>
+<td>向量检索优化</td>
+</tr>
+<tr>
+<td>检索精度</td>
+<td>高</td>
+<td>中高</td>
+<td>GraphRAG 社区摘要提供全局上下文</td>
+</tr>
+<tr>
+<td>更新效率</td>
+<td>低</td>
+<td>高</td>
+<td>LightRAG 支持实时增量更新</td>
+</tr>
+<tr>
+<td>部署成本</td>
+<td>高</td>
+<td>低</td>
+<td>计算和存储资源需求更低</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">适用场景对比</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>GraphRAG</th>
+<th>LightRAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大规模静态知识库</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>动态更新的知识库</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>资源受限环境</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>需要全局概览的查询</td>
+<td>✅</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>需要精确多跳推理</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>实时/流式应用</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>企业级生产部署</td>
+<td>⚠️（成本高）</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="lightrag_2">LightRAG 的优势</h2>
+<h3 id="1_1">1. 成本效益</h3>
+<ul>
+<li><strong>构建成本降低</strong>：减少 60-80% 的 LLM API 调用</li>
+<li><strong>存储优化</strong>：去除社区摘要存储，节省 50%+ 空间</li>
+<li><strong>计算效率</strong>：简化实体关系抽取逻辑</li>
+</ul>
+<h3 id="2_1">2. 实时性</h3>
+<ul>
+<li><strong>增量更新</strong>：支持文档的实时插入和更新</li>
+<li><strong>流式处理</strong>：适合处理持续产生的数据流</li>
+<li><strong>低延迟查询</strong>：向量检索 + 轻量级图遍历</li>
+</ul>
+<h3 id="3_1">3. 可扩展性</h3>
+<ul>
+<li>支持百万级实体规模的知识图谱</li>
+<li>分布式向量检索（兼容 FAISS、Milvus 等）</li>
+<li>图数据库集成（Neo4j、ArangoDB 等）</li>
+</ul>
+<h3 id="4">4. 易用性</h3>
+<ul>
+<li>简化的部署流程</li>
+<li>更少的超参数调优</li>
+<li>清晰的模块化设计</li>
+</ul>
+<hr />
+<h2 id="lightrag_3">LightRAG 的局限性</h2>
+<h3 id="1-graphrag">1. 全局上下文弱于 GraphRAG</h3>
+<ul>
+<li>缺少社区层面的全局摘要</li>
+<li>对于"总结全书主题"类查询效果略差</li>
+</ul>
+<h3 id="2_2">2. 复杂推理场景</h3>
+<ul>
+<li>超多跳（&gt;3 跳）关系推理能力有限</li>
+<li>缺乏显式的层级结构组织</li>
+</ul>
+<h3 id="3_2">3. 实体消歧</h3>
+<ul>
+<li>轻量级抽取可能在实体链接上精度略低</li>
+<li>需要额外的实体对齐机制</li>
+</ul>
+<hr />
+<h2 id="_11">技术实现要点</h2>
+<h3 id="_12">核心组件</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 伪代码示意</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LightRAG</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vector_store</span> <span class="o">=</span> <span class="n">VectorStore</span><span class="p">()</span>  <span class="c1"># 向量数据库</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_store</span> <span class="o">=</span> <span class="n">GraphStore</span><span class="p">()</span>    <span class="c1"># 图数据库</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_model</span> <span class="o">=</span> <span class="n">EmbeddingModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">LLM</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">documents</span><span class="p">):</span>
+        <span class="c1"># 1. 分块</span>
+        <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+        <span class="c1"># 2. 轻量级实体关系抽取</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+            <span class="n">entities</span><span class="p">,</span> <span class="n">relations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">light_extract</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+            <span class="c1"># 3. 为实体和关系生成双层 Key 向量</span>
+            <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">low_level_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># 实体名称</span>
+                <span class="n">entity</span><span class="o">.</span><span class="n">high_level_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">entity</span><span class="o">.</span><span class="n">type</span><span class="p">)</span> <span class="c1"># 实体类型/概念</span>
+
+            <span class="c1"># 4. 向量化存储</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vector_store</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">entities</span><span class="p">,</span> <span class="n">relations</span><span class="p">)</span>
+
+            <span class="c1"># 5. 增量更新图谱</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graph_store</span><span class="o">.</span><span class="n">upsert</span><span class="p">(</span><span class="n">entities</span><span class="p">,</span> <span class="n">relations</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="c1"># 1. 查询分解：提取双层 Keys</span>
+        <span class="n">low_keys</span><span class="p">,</span> <span class="n">high_keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_dual_keys</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+        <span class="c1"># 2. 双层向量检索</span>
+        <span class="c1"># Low-Level: 精确实体匹配</span>
+        <span class="n">low_candidates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector_store</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">low_keys</span><span class="p">),</span>
+            <span class="n">level</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="o">=</span><span class="mf">0.85</span>
+        <span class="p">)</span>
+
+        <span class="c1"># High-Level: 语义主题匹配</span>
+        <span class="n">high_candidates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector_store</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">high_keys</span><span class="p">),</span>
+            <span class="n">level</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="o">=</span><span class="mf">0.70</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 3. 融合排序（加权合并）</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_with_weights</span><span class="p">(</span>
+            <span class="n">low_candidates</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+            <span class="n">high_candidates</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">0.4</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 4. 子图扩展</span>
+        <span class="n">subgraph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_store</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span> <span class="n">hops</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># 5. 生成回答</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">subgraph</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract_dual_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;提取查询的双层关键词&quot;&quot;&quot;</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        从查询中提取两层关键词：</span>
+<span class="s2">        查询：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span>
+
+<span class="s2">        Low-Level（具体实体）: [提取具体名词、专有名词]</span>
+<span class="s2">        High-Level（抽象主题）: [提取概念类别、主题标签]</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parse_dual_keys</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_13">关键参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>推荐值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chunk_size</code></td>
+<td>文本分块大小</td>
+<td>512-1024 tokens</td>
+</tr>
+<tr>
+<td><code>top_k_low</code></td>
+<td>Low-Level 检索候选数</td>
+<td>20-30</td>
+</tr>
+<tr>
+<td><code>top_k_high</code></td>
+<td>High-Level 检索候选数</td>
+<td>30-50</td>
+</tr>
+<tr>
+<td><code>similarity_threshold_low</code></td>
+<td>Low-Level 匹配阈值（更严格）</td>
+<td>0.80-0.90</td>
+</tr>
+<tr>
+<td><code>similarity_threshold_high</code></td>
+<td>High-Level 匹配阈值（更宽松）</td>
+<td>0.65-0.75</td>
+</tr>
+<tr>
+<td><code>low_weight</code></td>
+<td>Low-Level 结果融合权重</td>
+<td>0.6-0.7</td>
+</tr>
+<tr>
+<td><code>high_weight</code></td>
+<td>High-Level 结果融合权重</td>
+<td>0.3-0.4</td>
+</tr>
+<tr>
+<td><code>expansion_hops</code></td>
+<td>子图扩展跳数</td>
+<td>2-3</td>
+</tr>
+<tr>
+<td><code>max_entities_per_chunk</code></td>
+<td>每块最大实体数</td>
+<td>5-10</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_14">参数调优建议</h4>
+<p><strong>Low-Level vs High-Level 平衡：</strong>
+- <strong>精确性优先场景</strong>（如事实查询）：提高 <code>low_weight</code> 到 0.7，降低 <code>similarity_threshold_low</code> 到 0.85
+- <strong>召回率优先场景</strong>（如探索性查询）：提高 <code>high_weight</code> 到 0.4，增加 <code>top_k_high</code> 到 50
+- <strong>均衡场景</strong>：使用默认权重（Low: 0.6, High: 0.4）</p>
+<hr />
+<h2 id="_15">应用建议</h2>
+<h3 id="graphrag">选择 GraphRAG 的场景</h3>
+<ul>
+<li>预算充足，追求最高检索质量</li>
+<li>数据相对静态，更新频率低</li>
+<li>需要全局概览和复杂多跳推理</li>
+<li>企业知识库、法律文档分析等</li>
+</ul>
+<h3 id="lightrag_4">选择 LightRAG 的场景</h3>
+<ul>
+<li>成本敏感，需要控制 LLM 调用开销</li>
+<li>数据动态变化，需要实时更新</li>
+<li>高并发查询场景</li>
+<li>资源受限的生产环境</li>
+<li>实时客服、动态新闻问答等</li>
+</ul>
+<h3 id="_16">混合策略</h3>
+<p>实际应用中可以考虑<strong>渐进式迁移</strong>：
+1. <strong>初期</strong>：使用 LightRAG 快速上线
+2. <strong>发展期</strong>：对高频查询构建 GraphRAG 缓存
+3. <strong>成熟期</strong>：关键业务用 GraphRAG，边缘场景用 LightRAG</p>
+<hr />
+<h2 id="_17">相关资源</h2>
+<ul>
+<li><strong>LightRAG GitHub</strong>: https://github.com/HKUDS/LightRAG</li>
+<li><strong>论文</strong>: <em>LightRAG: Simple and Fast Retrieval-Augmented Generation</em> (2024)</li>
+<li><strong>对比参考</strong>: [[GraphRAG]]</li>
+</ul>
+<hr />
+<h2 id="_18">总结</h2>
+<p>LightRAG 代表了 RAG 架构向<strong>轻量化、实时化、低成本化</strong>演进的方向。它在 GraphRAG 的基础上做了务实的取舍：</p>
+<ul>
+<li><strong>牺牲</strong>：部分全局摘要能力、超复杂多跳推理</li>
+<li><strong>获得</strong>：显著的成本降低、实时增量更新、更好的可扩展性</li>
+</ul>
+<p>对于生产环境中的大多数应用场景，LightRAG 提供了更实用的平衡点。</p>
+<hr />
+<p><em>创建时间: 2026-03-10</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/gujiawen777" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:your.email@example.com" target="_blank" rel="noopener" title="Email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://scholar.google.com/" target="_blank" rel="noopener" title="Google Scholar" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "header.autohide", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
