@@ -18,8 +18,20 @@ nav:
 theme:
   name: material
   palette:
-    primary: indigo
-    accent: indigo
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   font:
     text: Roboto
     code: Roboto Mono
@@ -27,9 +39,12 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
-    - header.autohide
+    - navigation.instant
+    - navigation.tracking
+    - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
   icon:
     logo: material/account-circle
 
