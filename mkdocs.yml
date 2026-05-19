@@ -5,12 +5,14 @@ site_author: Jiawen Gu
 
 nav:
   - Home: index.md
+  - CV: cv.md
   - Publications: publications.md
   - Research: research.md
-  - CV: cv.md
   - Notes:
     - Overview: notes/index.md
     - Transfer Learning: notes/transfer-learning.md
+    - GraphRAG: notes/GraphRAG.md
+    - LightRAG: notes/LightRAG.md
   
 
 theme:

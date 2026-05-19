@@ -41,6 +41,18 @@ I am a Master's student at Shanghai Normal University, focusing on developing **
 
 See [Publications](publications.md) for full list.
 
+---
+
+## Notes
+
+- [Transfer Learning](notes/transfer-learning.md) - Fine-tuning, Multitask Learning, Domain-adversarial training
+- [GraphRAG](notes/GraphRAG.md) - Graph-based Retrieval-Augmented Generation
+- [LightRAG](notes/LightRAG.md) - Lightweight RAG implementation
+
+See [Notes](notes/index.md) for more.
+
+---
+
 ## Contact
 
 📧 Email: 1006893541@qq.com
